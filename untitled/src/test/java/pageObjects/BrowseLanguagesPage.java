@@ -18,6 +18,19 @@ public class BrowseLanguagesPage extends BasePage {
     private List<WebElement> getSubmenuList() {
         return driver.findElements(By.xpath("//ul[@id='submenu']/li/a"));
     }
+    public String subNewLangArr() {
+        String answer = "";
+        List<WebElement> liElements = driver.findElements(By.xpath("//ul[@id='submenu']/li/a"));
+        for (int i = 0; i < liElements.size(); i++) {
+            WebElement liElement = liElements.get(i);
+            if (liElements.get(0).getText().equals("0-9")) {
+                System.out.println("Элемент найден!");
+                answer = "0-9";
+                break;
+               }
+        }
+        return answer;
+    }
 }
 
 
