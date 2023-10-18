@@ -22,6 +22,7 @@ public class BaseTest {
         Thread.sleep(3000);
         driver.quit();
     }
+
 }
 
 

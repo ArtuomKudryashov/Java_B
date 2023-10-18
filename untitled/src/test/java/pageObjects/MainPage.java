@@ -19,7 +19,7 @@ public class MainPage extends BasePage {
 
     // TC_11_01
     public String get99BofB() {
-        By elBy = By.xpath("(//*[text()='99 Bottles of Beer'])[1]");
+        final By elBy = By.xpath("(//*[text()='99 Bottles of Beer'])[1]");
         WebElement element = driver.findElement(elBy);
         String text = element.getText();
         return text;
@@ -34,14 +34,14 @@ public class MainPage extends BasePage {
     }
 
     // TC_11_02Arr
-    public String subNewLangArr() {
+    public String subNewLangArr(String tabName) {
         String answer = "";
         List<WebElement> liElements = driver.findElements(By.xpath("//ul[@id='menu']/li/a"));
         for (int i = 0; i < liElements.size(); i++) {
-            WebElement liElement = liElements.get(i);
-            if (liElements.get(i).getText().equals("SUBMIT NEW LANGUAGE")) {
+//            WebElement liElement = liElements.get(i);
+            if (liElements.get(i).getText().equals(tabName)) {
                 System.out.println("Элемент найден!");
-                answer = "SUBMIT NEW LANGUAGE";
+                answer = tabName;
             }
         }
         return answer;
@@ -56,8 +56,6 @@ public class MainPage extends BasePage {
         return new SubNewLan(driver);
 
     }
-
-
     //TC_11_04
     private List<WebElement> getSubMenuList() {
         return driver.findElements(By.xpath("//ul[@id='menu']/li/a"));
@@ -85,9 +83,9 @@ public class MainPage extends BasePage {
         return new StartPage(driver);
     }
     //15
-    public TopListsPage navigateToTopListPage() {
+    public TopListsPage navigateToTopListPage(String nameOfPage) {
         for (int i = 0; i < getSubMenuList().size(); i++) {
-            if (getSubMenuList().get(i).getText().equalsIgnoreCase("Top Lists")) {
+            if (getSubMenuList().get(i).getText().equalsIgnoreCase(nameOfPage)) {
                 getSubMenuList().get(i).click();
                 break;
             }

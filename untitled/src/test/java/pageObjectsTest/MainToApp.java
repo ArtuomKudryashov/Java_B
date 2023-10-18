@@ -29,7 +29,7 @@ public class MainToApp extends  BaseTest {
         String expectedResult1 = "SUBMIT NEW LANGUAGE";
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        Assert.assertEquals(mainPage.subNewLangArr(),expectedResult1);
+        Assert.assertEquals(mainPage.subNewLangArr("SUBMIT NEW LANGUAGE"),expectedResult1);
     }
 
 
@@ -52,7 +52,7 @@ public class MainToApp extends  BaseTest {
     public void TC_11_07_NameOfCreateTest()  {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        TopListsPage topList = mainPage.navigateToTopListPage();
+        TopListsPage topList = mainPage.navigateToTopListPage("Top Lists");
 
 //        Assert.assertTrue(mainPage.navigateToTopListPage());
 

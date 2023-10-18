@@ -22,6 +22,12 @@ public class SubNewLan extends BasePage {
         String actualText = elementSNL.getText();
         return actualText;
     }
+    // TC_11_03
+    public WebElement getTextSNL2() {
+        WebElement elementSNL = driver.findElement(By.xpath("(//*[text()='Submit New Language'])[1]"));
+        return elementSNL;
+    }
+
 
 
 //        private WebElement getSubNewLang() {

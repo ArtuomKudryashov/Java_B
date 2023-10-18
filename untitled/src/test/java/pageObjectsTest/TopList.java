@@ -12,7 +12,7 @@ public class TopList extends BaseTest{
     public void TC_11_07_columnHeadings(){
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        TopListsPage topListPage = mainPage.navigateToTopListPage();
+        TopListsPage topListPage = mainPage.navigateToTopListPage("Top Lists");
         Assert.assertEquals(topListPage.verifyColumnHeading(),true);
 
     }
@@ -21,7 +21,7 @@ public class TopList extends BaseTest{
     public void TC_TC_11_15_noComments(){
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        TopListsPage topListPage = mainPage.navigateToTopListPage();
+        TopListsPage topListPage = mainPage.navigateToTopListPage("Top Lists");
         topListPage.clickSubMenuItem("New Comments");
         topListPage.verifyNoNewComments();
         Assert.assertEquals(topListPage.verifyNoNewComments(),true);

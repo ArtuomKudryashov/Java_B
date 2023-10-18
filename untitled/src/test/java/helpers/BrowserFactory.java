@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import enums.BrowserType;
@@ -13,7 +14,7 @@ import static org.openqa.selenium.remote.Browser.FIREFOX;
 public class BrowserFactory {
     public static WebDriver getDriver(BrowserType browser){
         switch (browser){
-//
+            case EDGE:return getEdgeDriver();
             case FIREFOX: return getFirefoxDriver();
             default:return getChromeDriver();
         }
@@ -36,5 +37,9 @@ public class BrowserFactory {
 
         WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver(options);
+    }
+    private static WebDriver getEdgeDriver() {
+        WebDriverManager.edgedriver().setup();
+        return  new EdgeDriver();
     }
 }
