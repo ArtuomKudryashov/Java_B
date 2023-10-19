@@ -22,12 +22,12 @@ public class SubNewLan extends BasePage {
         String actualText = elementSNL.getText();
         return actualText;
     }
+
     // TC_11_03
     public WebElement getTextSNL2() {
         WebElement elementSNL = driver.findElement(By.xpath("(//*[text()='Submit New Language'])[1]"));
         return elementSNL;
     }
-
 
 
 //        private WebElement getSubNewLang() {
@@ -77,7 +77,7 @@ public class SubNewLan extends BasePage {
         return driver.findElements(textError);
     }
 
-    //solution via array
+    //11_11
     public boolean verifyErrorPFII2() {
         buttonSubLang().click();
         String[] textMessage = new String[]{"Error: Precondition failed - Incomplete Input."};
@@ -143,6 +143,43 @@ public class SubNewLan extends BasePage {
         return true;
     }
 
+    public boolean verifyErrorPFIIList() {
+        //Нажимаю на кнопку  чтобы получить текст ошибки
+        buttonSubLang().click();
+        String errMessage = driver.findElement(By.xpath("//*[contains(@style,'border: 1px solid red; ')]")).getText().trim();
+        String[] arrWordErr = errMessage.split(" ");
+        //Преобразовываю массив строк в список
+        List<String> errMessageList = Arrays.asList(arrWordErr);
+        List<String> keywords = Arrays.asList("Error:", "Precondition", "Incomplete", "Input.", "failed", "-");
+
+        boolean result = true;
+        if (errMessageList.size() != keywords.size()) {
+            result = false;
+        } else {
+            for (int i = 0; i < keywords.size(); i++) {
+                boolean keywordFound = false;
+                for (int j = 0; j < errMessageList.size(); j++) {
+                    if (errMessageList.get(j).equals(keywords.get(i))) {
+                        keywordFound = true;
+                        break;
+                    }
+                }
+                if (!keywordFound) {
+                    result = false;
+                    break;
+                }
+            }
+            if (!errMessage.contains(".") || !errMessage.contains(":") || !errMessage.contains("-")) {
+                result = false;
+            }
+        }
+        return result;
+    }
+
+
+
+
+
     public WebElement noteImportant() {
         By subLangButton = By.xpath("//input[@type='submit']");
         WebElement butSubLang = driver.findElement(subLangButton);
@@ -162,7 +199,7 @@ public class SubNewLan extends BasePage {
                 " Thanks for your understanding.");
 
     }
-    //11_21
+  //11_12List
 }
 
 

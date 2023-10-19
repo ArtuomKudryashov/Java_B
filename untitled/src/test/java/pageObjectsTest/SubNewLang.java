@@ -78,7 +78,19 @@ public class SubNewLang extends BaseTest {
 //        String actRes= subNewLan.verifyErrorPFII3();
         Assert.assertEquals(subNewLan.verifyErrorPFII3(), true);
 
+
+
     }
+    @Test
+    public void TC_11_12_verifyErrorPFIIContainsAllRequarementList() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.open();
+        SubNewLan subNewLan = mainPage.getSubNewLangPage();
+
+
+        Assert.assertEquals(subNewLan.verifyErrorPFIIList(), true);
+    }
+
 
     @Test
     public void TC_11_13_verifyImportans() {
@@ -88,6 +100,7 @@ public class SubNewLang extends BaseTest {
         Assert.assertTrue(subNewLan.verifyFirstImportantListItem());
 
     }
+
 
     //21
     @Test
